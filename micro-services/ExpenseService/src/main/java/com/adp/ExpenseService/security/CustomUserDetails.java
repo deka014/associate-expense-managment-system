@@ -1,5 +1,6 @@
 package com.adp.ExpenseService.security;
 
+import com.adp.ExpenseService.entities.User;
 import com.adp.ExpenseService.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class CustomUserDetails implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println(username);
-        Optional<com.adp.EntitiesService.entities.User> user = userRepository.findByEmail(username);
+        Optional<User> user = userRepository.findByEmail(username);
         System.out.println(user.get().getEmail());
 
         Set<GrantedAuthority> authorities = new HashSet<>();

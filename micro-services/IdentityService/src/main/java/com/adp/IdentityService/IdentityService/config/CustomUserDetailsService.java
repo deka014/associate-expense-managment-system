@@ -1,6 +1,6 @@
 package com.adp.IdentityService.IdentityService.config;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.IdentityService.IdentityService.entities.User;
 import com.adp.IdentityService.IdentityService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

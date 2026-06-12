@@ -1,6 +1,5 @@
 package com.adp.EntitiesService.entities;
 
-
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -10,52 +9,50 @@ import jakarta.persistence.*;
 
 import com.adp.EntitiesService.enums.*;
 
-
 @Entity
 @Table(name = "Expense_Group3_Oct3_2")
 public class Expense {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User userId;
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private User userId;
 
-    @Column(columnDefinition = "VARCHAR(50)")
-    @Enumerated(EnumType.STRING)
-    private ExpenseCategory category;
+	@Column(columnDefinition = "VARCHAR(50)")
+	@Enumerated(EnumType.STRING)
+	private ExpenseCategory category;
 
-    @Column
-    private Date expenseDate;
+	@Column
+	private Date expenseDate;
 
-    @Column(name = "expenseComment")
-    private String comment;
+	@Column(name = "expenseComment")
+	private String comment;
 
+	@Column(columnDefinition = "VARCHAR(50)")
+	@Enumerated(EnumType.STRING)
+	private SubmitStatus submitStatus;
 
-    @Column(columnDefinition = "VARCHAR(50)")
-    @Enumerated(EnumType.STRING)
-    private SubmitStatus submitStatus;
+	@JsonManagedReference
+	@OneToOne(mappedBy = "expenseId", cascade = CascadeType.ALL)
+	private Receipt receipt;
 
-    @JsonManagedReference
-    @OneToOne(mappedBy = "expenseId", cascade = CascadeType.ALL)
-    private Receipt receipt;
+	@Column(columnDefinition = "VARCHAR(50)")
+	@Enumerated(EnumType.STRING)
+	private ExpenseStatus status = ExpenseStatus.PENDING;
 
-    @Column(columnDefinition = "VARCHAR(50)")
-    @Enumerated(EnumType.STRING)
-    private ExpenseStatus status = ExpenseStatus.PENDING;
+	@Column
+	private String description;
 
-    @Column
-    private String description;
+	@Column
+	private String mgrComment;
 
-    @Column
-    private String mgrComment;
-
-    @Column
-    private Float amount;
+	@Column
+	private Float amount;
 
 	public Expense() {
 		super();
@@ -77,7 +74,6 @@ public class Expense {
 		this.mgrComment = mgrComment;
 		this.amount = amount;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -174,5 +170,4 @@ public class Expense {
 				+ status + ", description=" + description + ", mgrComment=" + mgrComment + ", amount=" + amount + "]";
 	}
 
-    
 }

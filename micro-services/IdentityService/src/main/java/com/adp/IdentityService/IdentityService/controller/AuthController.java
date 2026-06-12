@@ -1,6 +1,6 @@
 package com.adp.IdentityService.IdentityService.controller;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.IdentityService.IdentityService.entities.User;
 import com.adp.IdentityService.IdentityService.Dto.AuthRequest;
 import com.adp.IdentityService.IdentityService.Dto.UserDto;
 import com.adp.IdentityService.IdentityService.service.AuthService;

@@ -1,6 +1,6 @@
 package com.adp.ExpenseService.service;
 
-import com.adp.EntitiesService.entities.Receipt;
+import com.adp.ExpenseService.entities.Receipt;
 import com.adp.ExpenseService.repository.ReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +12,6 @@ public class ReceiptService {
 
     @Autowired
     private ReceiptRepository receiptRepository;
-
-
 
     public Receipt createReceipt(Receipt receipt) {
         return receiptRepository.save(receipt);

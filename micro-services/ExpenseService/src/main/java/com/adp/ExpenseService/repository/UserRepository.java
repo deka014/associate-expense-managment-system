@@ -1,6 +1,6 @@
 package com.adp.ExpenseService.repository;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.ExpenseService.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,8 +1,8 @@
 package com.adp.ExpenseService.dtos;
 
 
-import com.adp.EntitiesService.enums.ExpenseCategory;
-import com.adp.EntitiesService.enums.ExpenseStatus;
+import com.adp.ExpenseService.enums.ExpenseCategory;
+import com.adp.ExpenseService.enums.ExpenseStatus;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

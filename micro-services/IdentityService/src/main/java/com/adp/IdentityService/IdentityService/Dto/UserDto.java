@@ -1,9 +1,8 @@
 package com.adp.IdentityService.IdentityService.Dto;
 
-import com.adp.EntitiesService.enums.Department;
-import com.adp.EntitiesService.enums.ExpenseStatus;
-import com.adp.EntitiesService.enums.JobTitle;
-import com.adp.EntitiesService.enums.Role;
+import com.adp.IdentityService.IdentityService.enums.Department;
+import com.adp.IdentityService.IdentityService.enums.JobTitle;
+import com.adp.IdentityService.IdentityService.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

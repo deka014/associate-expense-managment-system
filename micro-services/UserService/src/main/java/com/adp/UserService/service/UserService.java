@@ -1,6 +1,6 @@
 package com.adp.UserService.service;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.UserService.entities.User;
 import com.adp.UserService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

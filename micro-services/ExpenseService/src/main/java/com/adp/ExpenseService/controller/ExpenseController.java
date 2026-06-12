@@ -1,10 +1,11 @@
 package com.adp.ExpenseService.controller;
 
 
-import com.adp.EntitiesService.entities.Expense;
-import com.adp.EntitiesService.entities.Receipt;
-import com.adp.EntitiesService.entities.User;
-import com.adp.EntitiesService.enums.ExpenseStatus;
+import com.adp.ExpenseService.entities.Expense;
+import com.adp.ExpenseService.entities.Receipt;
+import com.adp.ExpenseService.entities.User;
+import com.adp.ExpenseService.enums.ExpenseStatus;
+import com.adp.ExpenseService.enums.SubmitStatus;
 import com.adp.ExpenseService.dtos.ExpenseDTO;
 import com.adp.ExpenseService.repository.ExpenseRepository;
 import com.adp.ExpenseService.repository.ReceiptRepository;
@@ -58,7 +59,7 @@ public class ExpenseController {
         expense.setUserId(user);
         expense.setCategory(expenseDTO.getCategory());
         expense.setExpenseDate(expenseDTO.getExpenseDate());
-        expense.setSubmitStatus(com.adp.EntitiesService.enums.SubmitStatus.FALSE);
+        expense.setSubmitStatus(SubmitStatus.FALSE);
         expense.setDescription(expenseDTO.getDescription());
         expense.setAmount(expenseDTO.getAmount());
 
@@ -164,7 +165,7 @@ public class ExpenseController {
 
         List<Expense> result = new ArrayList<>();
         for (Expense expense : expenses) {
-            if (expense.getSubmitStatus().equals(com.adp.EntitiesService.enums.SubmitStatus.TRUE)) {
+            if (expense.getSubmitStatus().equals(SubmitStatus.TRUE)) {
                 result.add(expense);
             }
         }
@@ -184,7 +185,7 @@ public class ExpenseController {
 
         User user = userRepository.readUserById(id);
         List<Expense> expenses = expenseService.getExpensesByUserIdAndStatus(id,
-                com.adp.EntitiesService.enums.ExpenseStatus.valueOf(status));
+                ExpenseStatus.valueOf(status));
 
         List<Expense> result = new ArrayList<>();
 

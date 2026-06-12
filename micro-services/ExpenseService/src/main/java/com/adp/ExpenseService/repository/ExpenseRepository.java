@@ -1,16 +1,17 @@
 package com.adp.ExpenseService.repository;
 
-import com.adp.EntitiesService.entities.Expense;
-import com.adp.EntitiesService.entities.User;
+import com.adp.ExpenseService.entities.Expense;
+import com.adp.ExpenseService.entities.User;
 import com.adp.ExpenseService.enums.ExpenseCategory;
 import com.adp.ExpenseService.enums.ExpenseStatus;
+import com.adp.ExpenseService.enums.SubmitStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
-public interface ExpenseRepository extends JpaRepository<Expense,Integer> {
+public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 
     public List<Expense> findByUserId(User userId);
 
@@ -22,7 +23,6 @@ public interface ExpenseRepository extends JpaRepository<Expense,Integer> {
 
     public List<Expense> findByUserIdAndStatus(User user, ExpenseStatus status);
 
-    List<Expense> findExpenseByCategoryAndUserId(com.adp.EntitiesService.enums.ExpenseCategory category, User user);
-    List<Expense> findBySubmitStatusAndUserId(com.adp.EntitiesService.enums.SubmitStatus submitStatus, User user );
-    List<Expense> findByUserIdAndStatus(User user, com.adp.EntitiesService.enums.ExpenseStatus status);
+    public List<Expense> findBySubmitStatusAndUserId(SubmitStatus submitStatus, User user);
+
 }

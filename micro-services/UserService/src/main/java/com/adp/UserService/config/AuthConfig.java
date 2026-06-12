@@ -1,6 +1,6 @@
 package com.adp.UserService.config;
 
-import com.adp.EntitiesService.enums.Role;
+import com.adp.UserService.enums.Role;
 import com.adp.UserService.security.JwtAuthenticationEntryPoint;
 import com.adp.UserService.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;

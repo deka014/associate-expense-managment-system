@@ -1,4 +1,4 @@
-package com.adp.ExpenseService.enums;
+package com.adp.UserService.enums;
 
 import org.springframework.security.core.GrantedAuthority;
 

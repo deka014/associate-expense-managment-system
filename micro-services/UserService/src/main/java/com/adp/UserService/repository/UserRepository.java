@@ -1,7 +1,7 @@
 package com.adp.UserService.repository;
 
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.UserService.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

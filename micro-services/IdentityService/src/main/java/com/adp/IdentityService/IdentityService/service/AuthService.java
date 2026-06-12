@@ -1,6 +1,6 @@
 package com.adp.IdentityService.IdentityService.service;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.IdentityService.IdentityService.entities.User;
 import com.adp.IdentityService.IdentityService.Dto.AuthRequest;
 import com.adp.IdentityService.IdentityService.Dto.UserDto;
 import com.adp.IdentityService.IdentityService.exceptions.AppException;
@@ -51,7 +51,7 @@ public class AuthService {
 		if(user.isEmpty()) return null;
 		System.out.println(user.get().getEmail());
 		if(passwordEncoder.matches(CharBuffer.wrap(authRequest.getPassword()), user.get().getPassword()))
-			return userMapper.toUserDto(user);
+			return userMapper.toUserDto(user.get());
 		throw new AppException("Invalid Password",HttpStatus.BAD_REQUEST);
 
 	}

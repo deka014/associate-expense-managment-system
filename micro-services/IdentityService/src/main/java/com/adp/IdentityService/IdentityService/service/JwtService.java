@@ -1,6 +1,6 @@
 package com.adp.IdentityService.IdentityService.service;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.IdentityService.IdentityService.entities.User;
 import com.adp.IdentityService.IdentityService.config.CustomUserDetails;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

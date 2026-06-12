@@ -1,10 +1,11 @@
 package com.adp.ExpenseService.service;
 
-import com.adp.EntitiesService.entities.Expense;
-import com.adp.EntitiesService.entities.Receipt;
-import com.adp.EntitiesService.entities.User;
-import com.adp.EntitiesService.enums.ExpenseCategory;
-import com.adp.EntitiesService.enums.ExpenseStatus;
+import com.adp.ExpenseService.entities.Expense;
+import com.adp.ExpenseService.entities.Receipt;
+import com.adp.ExpenseService.entities.User;
+import com.adp.ExpenseService.enums.ExpenseCategory;
+import com.adp.ExpenseService.enums.ExpenseStatus;
+import com.adp.ExpenseService.enums.SubmitStatus;
 import com.adp.ExpenseService.repository.ExpenseRepository;
 import com.adp.ExpenseService.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +130,7 @@ public class ExpenseService {
 
     public Expense submitExpense(Expense expense) {
 
-        expense.setSubmitStatus(com.adp.EntitiesService.enums.SubmitStatus.TRUE);
+        expense.setSubmitStatus(SubmitStatus.TRUE);
         return expenseRepository.save(expense);
 
     }
@@ -140,7 +141,7 @@ public class ExpenseService {
         User user = userRepository.readUserById(id);
 
         if(user != null)
-            drafts = expenseRepository.findBySubmitStatusAndUserId(com.adp.EntitiesService.enums.SubmitStatus.FALSE, user);
+            drafts = expenseRepository.findBySubmitStatusAndUserId(SubmitStatus.FALSE, user);
 
         if(drafts.size() > 0) {
             return drafts;
@@ -164,14 +165,14 @@ public class ExpenseService {
                 Integer userId = user.getId();
 
                 List<Expense> pendingExpenseOfUser = getExpensesByUserIdAndStatus(userId,
-                        com.adp.EntitiesService.enums.ExpenseStatus.PENDING);
+                        ExpenseStatus.PENDING);
 
                 if(pendingExpenseOfUser != null)
                 {
                     System.out.println("Pending expense of User with id "+ userId + " found!");
                     for(Expense expense : pendingExpenseOfUser )
                     {
-                        if(expense.getSubmitStatus() != com.adp.EntitiesService.enums.SubmitStatus.FALSE)
+                        if(expense.getSubmitStatus() != SubmitStatus.FALSE)
                         {
                             pendingExpenses.add(expense);
                         }
@@ -198,14 +199,14 @@ public class ExpenseService {
                 Integer userId = user.getId();
 
                 List<Expense> approvedExpenseOfUser = getExpensesByUserIdAndStatus(userId,
-                        com.adp.EntitiesService.enums.ExpenseStatus.APPROVED);
+                        ExpenseStatus.APPROVED);
 
                 if(approvedExpenseOfUser != null)
                 {
                     System.out.println("Approved expense of User with id "+ userId + " found!");
                     for(Expense expense : approvedExpenseOfUser )
                     {
-                        if(expense.getSubmitStatus() != com.adp.EntitiesService.enums.SubmitStatus.FALSE)
+                        if(expense.getSubmitStatus() != SubmitStatus.FALSE)
                         {
                             approvedExpenses.add(expense);
                         }
@@ -231,14 +232,14 @@ public class ExpenseService {
                 Integer userId = user.getId();
 
                 List<Expense> rejectedExpenseOfUser = getExpensesByUserIdAndStatus(userId,
-                        com.adp.EntitiesService.enums.ExpenseStatus.REJECTED);
+                        ExpenseStatus.REJECTED);
 
                 if(rejectedExpenseOfUser != null)
                 {
                     System.out.println("rejcted expense of User with id "+ userId + " found!");
                     for(Expense expense : rejectedExpenseOfUser )
                     {
-                        if(expense.getSubmitStatus() != com.adp.EntitiesService.enums.SubmitStatus.FALSE)
+                        if(expense.getSubmitStatus() != SubmitStatus.FALSE)
                         {
                             rejectedExpenses.add(expense);
                         }
@@ -270,7 +271,7 @@ public class ExpenseService {
                     System.out.println("All expense of User with id "+ userId + " found!");
                     for(Expense expense : allExpenseOfUser )
                     {
-                        if(expense.getSubmitStatus() != com.adp.EntitiesService.enums.SubmitStatus.FALSE)
+                        if(expense.getSubmitStatus() != SubmitStatus.FALSE)
                         {
                             allExpenses.add(expense);
                         }

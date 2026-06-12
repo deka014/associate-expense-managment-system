@@ -1,7 +1,7 @@
 package com.adp.UserService.service;
 
 
-import com.adp.EntitiesService.entities.Expense;
+import com.adp.UserService.entities.Expense;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

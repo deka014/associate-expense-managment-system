@@ -1,4 +1,4 @@
-package com.adp.ExpenseService.enums;
+package com.adp.IdentityService.IdentityService.enums;
 
 public enum JobTitle {
     DEVELOPER,

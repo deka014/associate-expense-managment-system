@@ -1,6 +1,6 @@
 package com.adp.UserService.controller;
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.UserService.entities.User;
 import com.adp.UserService.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

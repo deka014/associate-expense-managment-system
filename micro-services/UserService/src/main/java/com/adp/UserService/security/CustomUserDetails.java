@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 
 
-import com.adp.EntitiesService.entities.User;
+import com.adp.UserService.entities.User;
 import com.adp.UserService.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;
@@ -59,7 +59,7 @@ public class CustomUserDetails implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<com.adp.EntitiesService.entities.User> user = userRepository.findByEmail(username);
+        Optional<User> user = userRepository.findByEmail(username);
 
         Set<GrantedAuthority> authorities = new HashSet<>();
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.get().getRole().toString());
