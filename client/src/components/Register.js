@@ -40,7 +40,7 @@ const Register = () => {
     }
 
     axios
-      .post('http://localhost:8083/auth/register', formData, {
+      .post('http://localhost/auth/register', formData, {
         headers: authHeader(),
       })
       .then((response) => {

@@ -15,7 +15,7 @@ const EmployeesOfManager = () => {
         async function fetchEmployeesOfManager(mngrId) {
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://localhost:8083/user/manager/${mngrId}`,
+                const response = await axios.get(`http://localhost/user/manager/${mngrId}`,
                 { headers: authHeader() })
                 setEmployeesList(response.data)
                 console.log("EMPLOYEES UNDER MANAGER ---> ", response.data)

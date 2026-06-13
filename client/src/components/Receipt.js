@@ -12,7 +12,7 @@ const Receipt = () => {
         // setIsLoading(true);
         async function fetchReceiptFile(expenseId) {
             try {
-                const response = await axios.get(`http://localhost:8083/expense/receipt/${expenseId}`)
+                const response = await axios.get(`http://localhost/expense/receipt/${expenseId}`)
                 setReceipt(response.data)
                 console.log("RECEIPT ---> ", response.data)
             }

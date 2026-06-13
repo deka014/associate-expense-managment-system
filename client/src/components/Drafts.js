@@ -37,7 +37,7 @@ const Drafts = () => {
       setIsLoading(true)
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/drafts/${userId}`,
+          `http://localhost/expense/drafts/${userId}`,
           { headers: authHeader() }
         )
         setDraftsList(response.data)

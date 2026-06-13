@@ -50,7 +50,7 @@ const Expenses = () => {
     async function fetchExpenseList(id) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/${id}`,
+          `http://localhost/expense/${id}`,
           { headers: authHeader() }
         )
         setExpensesList(response.data)
@@ -65,7 +65,7 @@ const Expenses = () => {
     async function fetchExpenseListByIdAndCategory(id, category) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/${id}/${category}`,
+          `http://localhost/expense/${id}/${category}`,
           { headers: authHeader() }
         )
         setExpensesList(response.data)
@@ -91,7 +91,7 @@ const Expenses = () => {
     async function fetchExpenseListByIdAndStatus(id, status) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/${id}/status/${status}`,
+          `http://localhost/expense/${id}/status/${status}`,
           { headers: authHeader() }
         )
         setExpensesList(response.data)
@@ -107,7 +107,7 @@ const Expenses = () => {
     async function fetchExpenseListByIdAndDates(id) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/find/${id}?startDate=${startDate}&endDate=${endDate}`,
+          `http://localhost/expense/find/${id}?startDate=${startDate}&endDate=${endDate}`,
           { headers: authHeader() }
         )
         setExpensesList(response.data)
@@ -128,7 +128,7 @@ const Expenses = () => {
     ) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/${id}/status/${status}/dates?startDate=${startDate}&endDate=${endDate}`,
+          `http://localhost/expense/${id}/status/${status}/dates?startDate=${startDate}&endDate=${endDate}`,
           { headers: authHeader() }
         )
         setExpensesList(response.data)

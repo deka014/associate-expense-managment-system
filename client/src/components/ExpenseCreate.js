@@ -62,7 +62,7 @@ const ExpenseCreate = () => {
     }
 
     axios
-      .post('http://localhost:8083/expense', formData, {
+      .post('http://localhost/expense', formData, {
         headers: authHeader(),
       })
       .then((response) => {
@@ -86,7 +86,7 @@ const ExpenseCreate = () => {
           window.location.href = `/expense-report/user/${userId}/${expId}`
         } else
           return axios.post(
-            `http://localhost:8083/expense/save/${expenseId}`,
+            `http://localhost/expense/save/${expenseId}`,
             formData,
             { headers: authHeader() }
           ) //this will throw error if there is no receipt file

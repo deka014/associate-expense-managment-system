@@ -33,7 +33,7 @@ const ReceiptCreate = () => {
         formData.append('fileType', 'pdf')
         
         axios
-            .post(`http://localhost:8083/expense/save/${expenseId}`, formData)
+            .post(`http://localhost/expense/save/${expenseId}`, formData)
             .then((response) => {
                 console.log("RECEIPT ID--->", response.data.id)
                 //   window.location.href = `/add-receipt/${response.id}`
@@ -49,7 +49,7 @@ const ReceiptCreate = () => {
         event.preventDefault();
 
         axios
-            .post('http://localhost:8083/expense/submit', receiptData)
+            .post('http://localhost/expense/submit', receiptData)
             .then((response) => {
                 console.log("RECEIPT ID--->", response.id)
                 alert("Expense Submitted Successfully!")

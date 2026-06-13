@@ -8,7 +8,7 @@ const ExpenseSubmit = () => {
 
     const handleOnSubmit = () => {
          axios
-            .put(`http://localhost:8083/expense/submit/${expenseId}`)
+            .put(`http://localhost/expense/submit/${expenseId}`)
             .then((response) => {
                 console.log("EXPENSE ID--->", expenseId)
                 alert("Expense Submitted Successfully!")

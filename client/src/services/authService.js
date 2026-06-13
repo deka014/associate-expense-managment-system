@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8083/";
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost/";
 
 const authService = {
   login(email, password) {
@@ -10,7 +10,7 @@ const authService = {
         password
       })
       .then(response => {
-        console.log(response.data,"i am the data")
+        console.log(response.data, "i am the data")
         if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }

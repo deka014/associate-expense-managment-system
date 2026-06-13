@@ -20,7 +20,7 @@ const ExpenseReportManager = () => {
 
     axios
       .put(
-        `http://localhost:8083/expense/add-comment/${expenseId}?mgrComment=${updatedComment}`,
+        `http://localhost/expense/add-comment/${expenseId}?mgrComment=${updatedComment}`,
         {},
         {
           headers: authHeader(),
@@ -51,7 +51,7 @@ const ExpenseReportManager = () => {
     event.preventDefault()
 
     axios
-      .put('http://localhost:8083/expense/updateStatus', expenseData, {
+      .put('http://localhost/expense/updateStatus', expenseData, {
         params: {
           status: 'APPROVED', // Set the status to APPROVED
         },
@@ -73,7 +73,7 @@ const ExpenseReportManager = () => {
     event.preventDefault()
 
     axios
-      .put('http://localhost:8083/expense/updateStatus', expenseData, {
+      .put('http://localhost/expense/updateStatus', expenseData, {
         params: {
           status: 'REJECTED', // Set the status to APPROVED
         },
@@ -94,7 +94,7 @@ const ExpenseReportManager = () => {
     async function fetchExpense(expenseId) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/exp-id/${expenseId}`,
+          `http://localhost/expense/exp-id/${expenseId}`,
           { headers: authHeader() }
         )
         setExpenseData(response.data)

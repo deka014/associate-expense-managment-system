@@ -15,7 +15,7 @@ const Employees = () => {
     async function fetchAllEmployees() {
       setIsLoading(true)
       try {
-        const response = await axios.get(`http://localhost:8083/user `, {
+        const response = await axios.get(`http://localhost/user `, {
           headers: authHeader(),
         })
         console.log(response, 'this is the response')
@@ -33,7 +33,7 @@ const Employees = () => {
     async function fetchEmployeeById(id) {
       setIsLoading(true)
       try {
-        const response = await axios.get(`http://localhost:8083/user/${id}`, {
+        const response = await axios.get(`http://localhost/user/${id}`, {
           headers: authHeader(),
         })
         setEmployeesList([response.data])

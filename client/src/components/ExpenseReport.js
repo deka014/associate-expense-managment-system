@@ -45,7 +45,7 @@ const ExpenseReport = () => {
     console.log()
     axios
       .put(
-        `http://localhost:8083/expense/save/${expenseId}/${expenseData.receipt.id}`,
+        `http://localhost/expense/save/${expenseId}/${expenseData.receipt.id}`,
         formData,
         {
           headers: authHeader(),
@@ -68,7 +68,7 @@ const ExpenseReport = () => {
     console.log(formData)
     console.log('handle add recipt')
     axios
-      .post(`http://localhost:8083/expense/save/${expenseId}`, formData, {
+      .post(`http://localhost/expense/save/${expenseId}`, formData, {
         headers: authHeader(),
       })
       .then((response) => {
@@ -85,7 +85,7 @@ const ExpenseReport = () => {
     event.preventDefault()
     if (window.confirm("Are you sure you want to delete this expense?")) {
     axios
-      .delete(`http://localhost:8083/expense/delete/${expenseId}`, {
+      .delete(`http://localhost/expense/delete/${expenseId}`, {
         headers: authHeader(),
       })
       .then((response) => {
@@ -111,7 +111,7 @@ const ExpenseReport = () => {
 
       // If update is successful, proceed with submission
       await axios.put(
-        `http://localhost:8083/expense/submit/${expenseId}`,
+        `http://localhost/expense/submit/${expenseId}`,
         {},
         { headers: authHeader() }
       )
@@ -128,7 +128,7 @@ const ExpenseReport = () => {
 
     try {
       await axios.put(
-        `http://localhost:8083/expense/update-expense/${expenseId}?description=${description}&amount=${amount}`,
+        `http://localhost/expense/update-expense/${expenseId}?description=${description}&amount=${amount}`,
         {},
         { headers: authHeader() }
       )
@@ -146,7 +146,7 @@ const ExpenseReport = () => {
     async function fetchExpense(expenseId) {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/exp-id/${expenseId}`,
+          `http://localhost/expense/exp-id/${expenseId}`,
           { headers: authHeader() }
         )
         setExpenseData(response.data)

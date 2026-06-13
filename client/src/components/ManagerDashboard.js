@@ -53,7 +53,7 @@ export default function ManagerDashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8083/expense/manager/${mgrId}/all-expenses`,
+          `http://localhost/expense/manager/${mgrId}/all-expenses`,
           {
             headers: authHeader(),
           }
