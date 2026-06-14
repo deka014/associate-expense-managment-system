@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+**/AiService/__pycache__/
+.env

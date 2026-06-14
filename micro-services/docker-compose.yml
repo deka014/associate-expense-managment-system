@@ -13,5 +13,14 @@ services:
       - mysql-data:/var/lib/mysql
     restart: always
 
+  ai-service:
+    build: ./AiService
+    container_name: ems-ai-service
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    restart: always
+
 volumes:
   mysql-data:
