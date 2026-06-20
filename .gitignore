@@ -33,3 +33,4 @@ build/
 .vscode/
 **/AiService/__pycache__/
 .env
+**/chroma_db
