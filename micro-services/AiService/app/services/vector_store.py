@@ -6,7 +6,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # Directory for persistent ChromaDB storage
-DB_PATH = os.path.join(os.path.dirname(__file__), "chroma_db")
+DB_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "chroma_db")
 
 # Use a lightweight, free local embedding model (runs completely offline)
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")

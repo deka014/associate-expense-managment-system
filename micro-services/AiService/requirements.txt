@@ -10,4 +10,6 @@ pypdf
 sentence-transformers
 python-multipart
 httpx
-
+easyocr
+numpy
+pymupdf

@@ -5,20 +5,53 @@ import json
 import re
 from langchain_core.messages import HumanMessage, SystemMessage
 
+
 def extract_text_from_pdf_bytes(pdf_bytes: bytes) -> str:
-    """Extracts raw text content from PDF bytes in memory."""
+    """Extracts raw text content from PDF bytes in memory, falling back to OCR if digital text is empty."""
+    text = ""
     try:
         pdf_file = io.BytesIO(pdf_bytes)
         reader = pypdf.PdfReader(pdf_file)
-        text = ""
         for page in reader.pages:
             page_text = page.extract_text()
             if page_text:
                 text += page_text + "\n"
-        return text.strip()
     except Exception as e:
-        print(f"Error extracting text from PDF: {e}")
-        return ""
+        print(f"Error during digital PDF text extraction: {e}")
+
+    # Fallback to OCR if no digital text was found (e.g. scanned PDF / receipt image embedded in PDF)
+    if not text.strip():
+        print("Digital extraction returned empty text. Falling back to EasyOCR...")
+        try:
+            import fitz  # PyMuPDF
+            import easyocr
+            import numpy as np
+            from PIL import Image
+            
+            # Initialize EasyOCR reader (downloads ~100MB model on first run, then cached)
+            reader = easyocr.Reader(['en'], gpu=False)
+            
+            # Open PDF from bytes natively using PyMuPDF
+            doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+            ocr_text = ""
+            for i in range(len(doc)):
+                page = doc[i]
+                pix = page.get_pixmap()
+                img_data = pix.tobytes("png")
+                image = Image.open(io.BytesIO(img_data))
+                
+                # EasyOCR expects a numpy array
+                img_array = np.array(image)
+                results = reader.readtext(img_array, detail=0)
+                page_text = " ".join(results)
+                if page_text.strip():
+                    ocr_text += f"\n--- Page {i+1} OCR ---\n" + page_text
+            text = ocr_text.strip()
+        except Exception as ocr_err:
+            print(f"Error during OCR fallback processing: {ocr_err}")
+            
+    return text.strip()
+
 
 def audit_single_expense(expense: dict, chat_model) -> dict:
     """
